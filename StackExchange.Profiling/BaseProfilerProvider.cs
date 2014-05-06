@@ -83,7 +83,7 @@ namespace StackExchange.Profiling
             storage.Save(current);
             if (current.HasUserViewed == false)
             {
-                storage.SetUnviewed(current.User, current.Id);
+                storage.SetUnviewed(current.UserName, current.Id);
             }
         }
     }

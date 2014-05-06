@@ -82,7 +82,7 @@ where not exists (select 1 from MiniProfilers where Id = @Id)"; // this syntax w
                         {
                             profiler.Id,
                             profiler.Started,
-                            User = profiler.User.Truncate(100),
+                            User = profiler.UserName.Truncate(100),
                             RootTimingId = profiler.Root != null ? profiler.Root.Id : (Guid?)null,
                             profiler.DurationMilliseconds,
                             profiler.HasUserViewed,

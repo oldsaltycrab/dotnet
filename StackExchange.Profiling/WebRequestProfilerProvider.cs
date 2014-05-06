@@ -52,7 +52,7 @@ namespace StackExchange.Profiling
             SetProfilerActive(result);
 
             // don't really want to pass in the context to MiniProfler's constructor or access it statically in there, either
-            result.User = Settings.UserProvider.GetUser(context.Request);
+            result.UserName = Settings.UserProvider.GetUser(context.Request);
 
             return result;
         }
@@ -87,7 +87,7 @@ namespace StackExchange.Profiling
             SetProfilerActive(result);
 
             // don't really want to pass in the context to MiniProfler's constructor or access it statically in there, either
-            result.User = Settings.UserProvider.GetUser(context.Request);
+            result.UserName = Settings.UserProvider.GetUser(context.Request);
 
             return result;
         }
@@ -130,13 +130,13 @@ namespace StackExchange.Profiling
 
             try
             {
-                var arrayOfIds = MiniProfiler.Settings.Storage.GetUnviewedIds(current.User);
+                var arrayOfIds = MiniProfiler.Settings.Storage.GetUnviewedIds(current.UserName);
 
                 if (arrayOfIds != null && arrayOfIds.Count > MiniProfiler.Settings.MaxUnviewedProfiles) 
                 {
                     foreach (var id in arrayOfIds.Take(arrayOfIds.Count - MiniProfiler.Settings.MaxUnviewedProfiles)) 
                     {
-                        MiniProfiler.Settings.Storage.SetViewed(current.User, id);
+                        MiniProfiler.Settings.Storage.SetViewed(current.UserName, id);
                     }
                 }
 

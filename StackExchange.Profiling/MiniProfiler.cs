@@ -193,10 +193,10 @@ namespace StackExchange.Profiling
         /// by default, this will be the current request's IP address.
         /// </remarks>
         [DataMember(Order = 9)]
-        public string User { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
-        /// Returns true when this MiniProfiler has been viewed by the <see cref="User"/> that recorded it.
+        /// Returns true when this MiniProfiler has been viewed by the <see cref="UserName"/> that recorded it.
         /// </summary>
         /// <remarks>
         /// Allows POSTs that result in a redirect to be profiled. <see cref="MiniProfiler.Settings.Storage"/> implementation

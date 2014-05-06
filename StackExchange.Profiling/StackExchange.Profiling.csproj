@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StackExchange.Profiling</RootNamespace>
     <AssemblyName>MiniProfiler</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\MiniProfiler.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\MiniProfiler.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -44,6 +46,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mono.Security">
+      <HintPath>..\packages\Npgsql.2.1.3\lib\net40\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.1.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Source\Packages\Npgsql.2.1.3\lib\net45\Npgsql.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -71,6 +80,7 @@
     <Compile Include="SqlTimingParameter.cs" />
     <Compile Include="Storage\DatabaseStorageBase.cs" />
     <Compile Include="Storage\MultiStorageProvider.cs" />
+    <Compile Include="Storage\PostgresServerStorage.cs" />
     <Compile Include="Storage\SqlServerStorage.cs" />
     <Compile Include="Suppression.cs" />
     <Compile Include="Data\ExecuteType.cs" />
@@ -124,6 +134,9 @@
     <Compile Include="Storage\IStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlProfiler.cs" />
+    <Compile Include="ThreadProfilerProvider.cs">
+      <DependentUpon>IProfilerProvider.cs</DependentUpon>
+    </Compile>
     <Compile Include="Timing.cs" />
     <Compile Include="WebRequestProfilerProvider.cs">
       <DependentUpon>IProfilerProvider.cs</DependentUpon>
@@ -134,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="miniprofiler.snk" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ui\" />

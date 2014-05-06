@@ -43,7 +43,7 @@
             {
                 var header = new MiniProfilerRequestHeader
                 {
-                    User = miniProfiler.User,
+                    User = miniProfiler.UserName,
                     ParentProfilerId = miniProfiler.Id
                 };
 

@@ -315,6 +315,11 @@ namespace StackExchange.Profiling
             /// </summary>
             public static string Version { get; private set; }
 
+			/// <summary>
+            /// Stop MiniProfiler on last timing dispose
+            /// </summary>
+            public static bool AutoStop { get; set; }
+
             /// <summary>
             /// The <see cref="IProfilerProvider"/> class that is used to run MiniProfiler
             /// </summary>

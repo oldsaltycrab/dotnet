@@ -108,7 +108,7 @@ namespace StackExchange.Profiling.MongoDB
                 Name = profiler.Name,
                 Started = profiler.Started,
                 DurationMilliseconds = (double) profiler.DurationMilliseconds,
-                User = profiler.User,
+                User = profiler.UserName,
                 HasUserViewed = profiler.HasUserViewed,
                 MachineName = profiler.MachineName,
                 CustomLinksJson = profiler.CustomLinksJson,
@@ -308,7 +308,7 @@ namespace StackExchange.Profiling.MongoDB
             {
                 Id = profilerPoco.Id,
                 MachineName = profilerPoco.MachineName,
-                User = profilerPoco.User,
+                UserName = profilerPoco.User,
                 HasUserViewed = profilerPoco.HasUserViewed,
                 Name = profilerPoco.Name,
                 Started = profilerPoco.Started,

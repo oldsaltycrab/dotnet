@@ -62,7 +62,7 @@ namespace StackExchange.Profiling.Wcf
             SetCurrentProfiler(result);
 
             // don't really want to pass in the context to MiniProfler's constructor or access it statically in there, either
-            result.User = (Settings.UserProvider ?? new EmptyUserProvider()).GetUser(/*context.Request*/);
+            result.UserName = (Settings.UserProvider ?? new EmptyUserProvider()).GetUser(/*context.Request*/);
 
             SetProfilerActive(result);
 
@@ -108,7 +108,7 @@ namespace StackExchange.Profiling.Wcf
             SetCurrentProfiler(result);
 
             // don't really want to pass in the context to MiniProfler's constructor or access it statically in there, either
-            result.User = (Settings.UserProvider ?? new EmptyUserProvider()).GetUser(/*context.Request*/);
+            result.UserName = (Settings.UserProvider ?? new EmptyUserProvider()).GetUser(/*context.Request*/);
 
             SetProfilerActive(result);
 

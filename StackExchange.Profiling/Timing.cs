@@ -21,6 +21,9 @@ namespace StackExchange.Profiling
         private readonly decimal? _minSaveMs;
         private readonly bool _includeChildrenWithMinSave;
 
+		[ThreadStatic]
+		static int mReferenceCount = 0;
+
         /// <summary>
         /// Initialises a new instance of the <see cref="Timing"/> class. 
         /// Obsolete - used for serialization.
@@ -51,6 +54,11 @@ namespace StackExchange.Profiling
             _minSaveMs = minSaveMs;
             _includeChildrenWithMinSave = includeChildrenWithMinSave == true;
             StartMilliseconds = profiler.GetRoundedMilliseconds(_startTicks);
+
+			if (MiniProfiler.Settings.AutoStop)
+			{
+				mReferenceCount++;
+			}
         }
 
         /// <summary>
@@ -243,6 +251,14 @@ namespace StackExchange.Profiling
                     ParentTiming.RemoveChild(this);
                 }
             }
+			if (MiniProfiler.Settings.AutoStop == true)
+			{
+				mReferenceCount--;
+				if (mReferenceCount == 1)  //its 1 because the Root timing object isn't disposed until the Profiler actually stops
+				{
+					MiniProfiler.Stop();
+				}
+			}
         }
 
         /// <summary>
