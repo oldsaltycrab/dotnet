@@ -48,7 +48,7 @@ namespace StackExchange.Profiling
 			if (_profiler != null)
 			{
 				_profiler.StopImpl();
-
+				_profiler.IsActive = false;
 				 // save the profiler
 				SaveProfiler();
 			}
